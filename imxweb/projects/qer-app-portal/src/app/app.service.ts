@@ -125,9 +125,9 @@ export class AppService {
 
   private showSplash(): void {
     // open splash screen with fix values
-    // 10-Nov-2024: Update Splash Screen
-    this.splash.init({ applicationName: 'MyAccess Web Portal' });
-    // this.splash.init({ applicationName: 'One Identity Manager Portal' });
+    // 10-Nov-2024: Update Splash Screen 
+    this.splash.init({ applicationName: 'MyAccess Web Portal' }); 
+    // this.splash.init({ applicationName: 'One Identity Manager Portal' }); 
   }
 
   private async updateSplash(title: string): Promise<void> {

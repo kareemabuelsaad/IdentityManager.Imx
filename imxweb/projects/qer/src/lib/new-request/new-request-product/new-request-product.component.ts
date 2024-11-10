@@ -71,8 +71,8 @@ export class NewRequestProductComponent implements OnInit, OnDestroy {
   private busy: Busy;
   private subscriptions: Subscription[] = [];
   private accProductGroup: string;
-  // 03-Nov-2024 - Include child categories
-  private includeChildCategories = true;
+  // 03-Nov-2024 - Include child categories 
+  private includeChildCategories = true; 
   // #endregion
 
   // #region Public
@@ -352,9 +352,9 @@ export class NewRequestProductComponent implements OnInit, OnDestroy {
           firstIteration = false;
         } else {
           this.dynamicDataSource.setup(true);
-         // 31-Oct-2024
-         // Do not load Service items on initialization for root category
-         //  this.getProductData(true);
+         // 31-Oct-2024 
+         // Do not load Service items on initialization for root category 
+         //  this.getProductData(true); 
         }
       })
     );
@@ -386,10 +386,10 @@ export class NewRequestProductComponent implements OnInit, OnDestroy {
       this.includeChildCategories = false;
       // this.orchestration.includeChildCategories = this.includeChildCategories;
       this.accProductGroup = null;
-      // 31-Oct-2024
-      // Do not load upon selection of Root service category
-      // Do not load Service items on initialization for root category
-      // this.getProductData();
+      // 31-Oct-2024 
+      // Do not load upon selection of Root service category 
+      // Do not load Service items on initialization for root category 
+      // this.getProductData(); 
     }
 
     this.orchestration.includeChildCategories = this.includeChildCategories;

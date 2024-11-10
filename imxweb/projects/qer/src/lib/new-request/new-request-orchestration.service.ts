@@ -172,8 +172,8 @@ export class NewRequestOrchestrationService implements OnDestroy {
     this.includeChildCategoriesProperty = value;
     this.includeChildCategories$.next(value);
   }
-  // 03-Nov-2024 - Include Child Categories
-  public includeChildCategories$ = new BehaviorSubject<boolean>(true);
+  // 03-Nov-2024 - Include Child Categories 
+  public includeChildCategories$ = new BehaviorSubject<boolean>(true); 
     //#endregion
 
   //#region Reference User

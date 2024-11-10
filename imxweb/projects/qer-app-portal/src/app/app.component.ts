@@ -173,9 +173,9 @@ export class AppComponent implements OnInit, OnDestroy {
         this.routerStatus = event.type;
         if (this.isLoggedIn && event.url === '/') {
           // show the splash screen, when the user logs out!
-          // 10-Nov-2024: Update Splash Screen
-          this.splash.init({ applicationName: 'MyAccess Web Portal' });
-          // this.splash.init({ applicationName: 'One Identity Manager Portal' });
+          // 10-Nov-2024: Update Splash Screen 
+          this.splash.init({ applicationName: 'MyAccess Web Portal' }); 
+          // this.splash.init({ applicationName: 'One Identity Manager Portal' }); 
         }
       }
 

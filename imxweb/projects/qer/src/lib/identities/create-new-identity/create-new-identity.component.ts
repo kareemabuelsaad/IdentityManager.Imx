@@ -201,9 +201,9 @@ export class CreateNewIdentityComponent implements OnDestroy {
         this.sidesheetRef.close(false);
       }
     }));
-    // 28-Oct-2024
-    //const identifierColumns = ['FirstName', 'LastName', 'CentralAccount', 'DefaultEmailAddress'];
-    const identifierColumns = ['CentralAccount', 'DefaultEmailAddress'];
+    // 28-Oct-2024 
+    //const identifierColumns = ['FirstName', 'LastName', 'CentralAccount', 'DefaultEmailAddress']; 
+    const identifierColumns = ['CentralAccount', 'DefaultEmailAddress']; 
     this.cdrListIdentifier = this.cdrFactoryService.buildCdrFromColumnList(this.data.selectedIdentity.GetEntity(),identifierColumns);
 
     const personalColumns = this.data.projectConfig.PersonConfig.VI_Employee_MasterData_Attributes
