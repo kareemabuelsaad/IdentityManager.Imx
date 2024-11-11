@@ -1,0 +1,88 @@
+C:\APIDesigner\IdentityManager-Nam-Presales.Imx\imxweb> npm install
+1) OPEN CMD AS Administrator
+
+2) Go to this location > cd "C:\APIDesigner\IdentityManager-Nam-Presales.Imx\imxweb"
+cd "C:\New Portal\IdentityManager.Imx\imxweb"
+
+3) # --> Build/start basic modules
+npm run build:watch qbm
+npm run build:watch qer
+npm run build:watch qer-app-portal
+
+4) # --> Start the Web Portal
+npm run start qer-app-portal
+
+# --> to deploy the code to the existing API Server
+Compress-Archive -Path "C:\APIDesigner\IdentityManager.Imx\imxweb\dist\qbm-app-landingpage\*" -DestinationPath "C:\inetpub\wwwroot\ApiServer\bin\imxweb\Html_qbm-app-landingpage.zip"
+Compress-Archive -Path "C:\APIDesigner\IdentityManager.Imx\imxweb\dist\qer-app-portal\*" -DestinationPath "C:\inetpub\wwwroot\ApiServer\bin\imxweb\Html_qer-app-portal.zip" -Force
+
+1) npm run build:lib att
+2) Compress-Archive -Path "C:\APIDesigner\IdentityManager.Imx\imxweb\dist\att\*" -DestinationPath "C:\inetpub\wwwroot\ApiServer\bin\imxweb\Html_att.zip" -force
+ 
+npm run build:app qbm-app-landingpage
+npm run build:app qer-app-portal
+
+
+
+https://github.com/oi-nam-presales/IdentityManager-Nam-Presales.Imx.git
+
+git clone https://github.com/oi-nam-presales/IdentityManager-Nam-Presales.Imx.git
+
+git clone -b V92 https://github.com/oi-nam-presales/IdentityManager-Nam-Presales.Imx.git
+
+
+
+
+
+Compress-Archive -Path "C:\APIDesigner\IdentityManager-Nam-Presales.Imx\imxweb\dist\qer\*" -DestinationPath "C:\inetpub\wwwroot\ApiServer\bin\imxweb\Html_qer.zip" -Force
+
+Compress-Archive -Path "C:\APIDesigner\IdentityManager-Nam-Presales.Imx\imxweb\dist\qer-app-portal\*" -DestinationPath "C:\inetpub\wwwroot\ApiServer\bin\imxweb\Html_qer-app-portal.zip" -Force
+
+Compress-Archive -Path "C:\APIDesigner\IdentityManager-Nam-Presales.Imx\imxweb\dist\qbm-app-landingpage\*" -DestinationPath "C:\inetpub\wwwroot\ApiServer\bin\imxweb\Html_qbm-app-landingpage.zip" -Force
+
+Compress-Archive -Path "C:\APIDesigner\IdentityManager-Nam-Presales.Imx\imxweb\dist\qbm\*" -DestinationPath "C:\inetpub\wwwroot\ApiServer\bin\imxweb\Html_qbm.zip" -Force
+
+Compress-Archive -Path "C:\APIDesigner\IdentityManager-Nam-Presales.Imx\imxweb\dist\att\*" -DestinationPath "C:\inetpub\wwwroot\ApiServer\bin\imxweb\Html_att.zip" -force
+
+
+Compress-Archive -Path "C:\APIDesigner\IdentityManager-Nam-Presales.Imx\imxweb\dist\tsb\*" -DestinationPath "C:\inetpub\wwwroot\ApiServer\bin\imxweb\Html_tsb.zip" -force
+
+
+
+
+Compress-Archive -Path "F:\Personal\Technical\Project\AngularPortal\IdentityManager-Nam-Presales.Imx\imxweb\dist\qbm\*" -DestinationPath "F:\Personal\Technical\Project\AngularPortal\Custom\Html_qbm.zip" -Force
+
+Compress-Archive -Path "F:\Personal\Technical\Project\AngularPortal\IdentityManager-Nam-Presales.Imx\imxweb\dist\qer\*" -DestinationPath "F:\Personal\Technical\Project\AngularPortal\Custom\Html_qer.zip" -Force
+
+Compress-Archive -Path "F:\Personal\Technical\Project\AngularPortal\IdentityManager-Nam-Presales.Imx\imxweb\dist\qer-app-portal\*" -DestinationPath "F:\Personal\Technical\Project\AngularPortal\Custom\Html_qer-app-portal.zip" -Force
+
+
+Compress-Archive -Path "F:\Personal\Technical\Project\workspace3\IdentityManager.Imx\imxweb\dist\qbm\*" -DestinationPath "F:\Personal\Technical\Project\workspace3\Release\Html_qbm.zip" -Force
+
+
+
+
+//html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video {
+   
+  //  direction: rtl;
+    
+//}
+
+
+.eui-sidesheet {
+    direction:rtl;
+}
+
+https://github.com/oi-nam-presales/IdentityManager-Nam-Presales.Imx.git
+"projects/qer-app-portal/src/styles.scss",
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video
+
+
+
+ 
+
+
+
+
+
