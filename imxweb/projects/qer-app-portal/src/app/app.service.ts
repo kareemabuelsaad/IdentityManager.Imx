@@ -73,7 +73,8 @@ export class AppService {
   ) { }
 
   public async init(): Promise<void> {
-    this.showSplash();
+    // 12-Nov-2024 - Hide Splash Screen
+    // this.showSplash();
     await this.config.init(environment.clientUrl);
 
     this.translateService.addLangs(this.config.Config.Translation.Langs);
