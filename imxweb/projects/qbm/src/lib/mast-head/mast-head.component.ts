@@ -163,7 +163,9 @@ export class MastHeadComponent implements OnDestroy {
         // make relative URL absolute if needed
         this.logoUrl = new URL(config.CompanyLogoUrl, this.appConfig.BaseUrl).href;
       }
-      const name = config.ProductName;
+      //
+      const name = 'MyAccess'; 
+      //const name = config.ProductName;
       if (name) {
         this.productName = name;
       }

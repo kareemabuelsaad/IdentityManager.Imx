@@ -34,9 +34,7 @@ import { EuiSplashScreenConfig, EuiSplashScreenOptions, EuiSplashScreenService }
 export class SplashService {
 
   private defaultOptions: EuiSplashScreenConfig = {
-    // 10-Nov-2024: Update Splash Screen 
-    applicationName: 'MyAccess Web Portal', 
-    // applicationName: 'One Identity Manager', 
+    applicationName: 'One Identity Manager', 
     icon: 'oi-horizontal',
     showSpinner: true,
     message: 'Loading...'

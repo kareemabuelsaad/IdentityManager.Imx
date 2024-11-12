@@ -100,7 +100,9 @@ export class AppService {
 
   private async setTitle(): Promise<void> {
     const imxConfig = await this.systemInfoService.getImxConfig();
-    const name = imxConfig.ProductName || Globals.QIM_ProductNameFull;
+    // 11-Nov-2024: Update MyAccess Portal Name
+    const name = 'MyAccess'
+    //const name = imxConfig.ProductName || Globals.QIM_ProductNameFull;
     this.config.Config.Title = await this.translateService.get('#LDS#Heading Operations Support Web Portal').toPromise();
     const title = `${name} ${this.config.Config.Title}`;
     this.title.setTitle(title);

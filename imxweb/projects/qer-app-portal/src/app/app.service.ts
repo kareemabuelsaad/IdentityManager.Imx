@@ -108,7 +108,9 @@ export class AppService {
 
   private async setTitle(): Promise<void> {
     const imxConfig = await this.systemInfoService.getImxConfig();
-    const name = imxConfig.ProductName || Globals.QIM_ProductNameFull;
+    // 11-Nov-2024: Update MyAccess Portal Name
+    const name = 'MyAccess'
+    //const name = imxConfig.ProductName || Globals.QIM_ProductNameFull;
     this.config.Config.Title = await this.translateService.get('#LDS#Heading Web Portal').toPromise();
     const title = `${name} ${this.config.Config.Title}`;
     this.title.setTitle(title);
@@ -126,9 +128,7 @@ export class AppService {
 
   private showSplash(): void {
     // open splash screen with fix values
-    // 10-Nov-2024: Update Splash Screen 
-    this.splash.init({ applicationName: 'MyAccess Web Portal' }); 
-    // this.splash.init({ applicationName: 'One Identity Manager Portal' }); 
+    this.splash.init({ applicationName: 'One Identity Manager Portal' }); 
   }
 
   private async updateSplash(title: string): Promise<void> {

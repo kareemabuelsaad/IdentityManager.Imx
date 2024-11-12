@@ -160,7 +160,9 @@ export class LoginComponent implements OnInit, OnDestroy {
       // make relative URL absolute if needed
       this.logoUrl = new URL(config.CompanyLogoUrl, this.appConfigService.BaseUrl).href;
     }
-    const name = config.ProductName;
+    // 11-Nov-2024 - Update Product Name
+    //const name = config.ProductName;
+    const name = 'MyAccess';
     if (name) {
       this.product.name = name;
     }
