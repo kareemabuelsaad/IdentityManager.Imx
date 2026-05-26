@@ -1,4 +1,10 @@
 ### April 17, 2026
+- 708344: Fixing an issue with ordering a product where the service item has a mandatory image form field.
+- 706275: Fixes an issue with bulk editing does not work in shopping cart for some items.
+- 544663: Fixes an issue where duplicate HTTP GET request if browser language is English and user profile language is German.
+- 704524: Fixes an issue where Inquiries about Attestation Cases will not be displayed in Pending Attestations.
+
+### April 17, 2026
 - 697986: Fixes an issue with a missing warning if there are too many results for the search.
 - 699092: Fixes an issue with re-selecting all items in a paged view.
 - 483430: Fixes an issue with a missing 'Products expiring soon' tile if the current user is not the requester.
