@@ -1,4 +1,4 @@
-### April 17, 2026
+### May 26, 2026
 - 708344: Fixing an issue with ordering a product where the service item has a mandatory image form field.
 - 706275: Fixes an issue with bulk editing does not work in shopping cart for some items.
 - 544663: Fixes an issue where duplicate HTTP GET request if browser language is English and user profile language is German.
