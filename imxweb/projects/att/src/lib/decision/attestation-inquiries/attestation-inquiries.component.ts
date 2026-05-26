@@ -165,7 +165,10 @@ export class AttestationInquiriesComponent implements OnInit, OnDestroy {
       columnsToDisplay: this.displayedColumns,
       dataModel: this.dataModel,
       exportFunction: this.attestationCasesService.exportData(),
-      viewConfig: this.viewConfig,
+      // Strip GroupBy from the view config: the group API does not support forinquiry,
+      // so applying an admin-configured GroupBy would result in a blank page (groupData
+      // stays undefined while groupByColumn is set, making totalCount() return 0).
+      viewConfig: this.getInquiriesViewConfig(),
       highlightEntity: (identity: AttestationCase) => {
         this.editCase(identity);
       },
@@ -176,13 +179,30 @@ export class AttestationInquiriesComponent implements OnInit, OnDestroy {
   public async updateConfig(config: ViewConfigData): Promise<void> {
     await this.viewConfigService.putViewConfig(config);
     this.viewConfig = await this.viewConfigService.getDSTExtensionChanges(this.viewConfigPath);
-    this.dataSource.viewConfig.set(this.viewConfig);
+    this.dataSource.viewConfig.set(this.getInquiriesViewConfig());
   }
 
   public async deleteConfigById(id: string): Promise<void> {
     await this.viewConfigService.deleteViewConfig(id);
     this.viewConfig = await this.viewConfigService.getDSTExtensionChanges(this.viewConfigPath);
-    this.dataSource.viewConfig.set(this.viewConfig);
+    this.dataSource.viewConfig.set(this.getInquiriesViewConfig());
+  }
+
+  /**
+   * Returns a copy of the current view config with GroupBy cleared from all configs.
+   * The attestation inquiries view intentionally hides the group-by control (showGrouping=false)
+   * because the group API endpoint does not support filtering by inquiry. Without this stripping,
+   * an admin-set default GroupBy (AttestationApprovalView/GroupBy) causes a blank page: groupByColumn
+   * gets set but groupExecute is not defined, leaving groupData undefined and totalCount at 0.
+   */
+  private getInquiriesViewConfig(): DataSourceToolbarViewConfig | undefined {
+    if (!this.viewConfig) {
+      return undefined;
+    }
+    return {
+      ...this.viewConfig,
+      viewConfigs: this.viewConfig.viewConfigs?.map((config) => ({ ...config, GroupBy: undefined })),
+    };
   }
 
   /**
