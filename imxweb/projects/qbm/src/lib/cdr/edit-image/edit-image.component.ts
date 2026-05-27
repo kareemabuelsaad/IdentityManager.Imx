@@ -44,6 +44,7 @@ import { EntityColumnContainer } from '../entity-column-container';
   selector: 'imx-edit-image',
   templateUrl: './edit-image.component.html',
   styleUrls: ['./edit-image.component.scss'],
+  providers: [FileSelectorService],
 })
 export class EditImageComponent implements CdrEditor, OnDestroy {
   /**
@@ -204,7 +205,7 @@ export class EditImageComponent implements CdrEditor, OnDestroy {
    */
   private async writeValue(value: string | undefined): Promise<void> {
     this.logger.debug(this, 'writeValue called with value', value);
-    if (this.control.errors) {
+    if (this.control.errors && Object.keys(this.control.errors).some((elem) => elem !== 'required')) {
       this.logger.debug(this, 'writeValue - client validation failed');
       return;
     }
