@@ -79,4 +79,8 @@ export class WorkflowActionComponent {
       );
     }
   }
+
+  onClose(): void {
+    this.sideSheetRef.close(this.formGroup);
+  }
 }

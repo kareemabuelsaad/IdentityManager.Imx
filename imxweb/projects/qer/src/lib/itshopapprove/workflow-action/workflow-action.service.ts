@@ -29,7 +29,7 @@ import { EuiLoadingService, EuiSidesheetService } from '@elemental-ui/core';
 import { TranslateService } from '@ngx-translate/core';
 import { Subject } from 'rxjs';
 
-import { AbstractControl } from '@angular/forms';
+import { AbstractControl, UntypedFormGroup } from '@angular/forms';
 import {
   CollectionLoadParameters,
   CompareOperator,
@@ -87,7 +87,7 @@ export class WorkflowActionService {
     private readonly extService: ExtService,
     private readonly userService: UserModelService,
     private readonly queueService: ProcessingQueueService,
-  ) { }
+  ) {}
 
   public async directDecisions(requests: (Approval | TypedEntity)[], userUid: string): Promise<void> {
     const actionParameters = {
@@ -374,11 +374,10 @@ export class WorkflowActionService {
           message:
             '#LDS#The validity period you specified is not valid. The validity end date lies before the validity start date, or vice versa. Change the validity period.',
         },
-
       },
-      apply: async (request: Approval) => {
-        if (request.canSetValidFrom() && actionParameters.validFrom) {
-          const from = actionParameters.validFrom.column.GetValue();
+      apply: async (request: Approval, formGroup: UntypedFormGroup) => {
+        if (request.canSetValidFrom() && formGroup.controls.ValidFrom) {
+          const from = formGroup.controls.ValidFrom!.value;
           if (from) {
             request.ValidFrom.value = addTimeNowToDate(from);
           } else {
@@ -387,8 +386,8 @@ export class WorkflowActionService {
           }
         }
 
-        if (request.canSetValidUntil(itShopConfig) && actionParameters.validUntil) {
-          const until = actionParameters.validUntil.column.GetValue();
+        if (request.canSetValidUntil(itShopConfig) && formGroup.controls.ValidUntil) {
+          const until = formGroup.controls.ValidUntil!.value;
           if (until) {
             request.ValidUntil.value = addTimeNowToDate(until);
           } else {
@@ -396,7 +395,6 @@ export class WorkflowActionService {
             await request.ValidUntil.Column.PutValue(null);
           }
         }
-
         await request.commit();
         await this.approvalsService.makeDecision(request, {
           Reason: actionParameters.reason?.column.GetValue(),
@@ -439,13 +437,13 @@ export class WorkflowActionService {
         isInEscalationView: isEscalation,
         customValidation: itShopConfig?.VI_ITShop_ApproverReasonMandatoryOnDeny
           ? {
-            validate: () => {
-              const reasonValue = actionParameters.reason?.column.GetValue();
-              const justificationValue = actionParameters.justification?.column?.GetValue();
-              return (reasonValue != null && reasonValue.length > 0) || (justificationValue != null && justificationValue.length > 0);
-            },
-            message: '#LDS#Please enter or select a reason for your decision.',
-          }
+              validate: () => {
+                const reasonValue = actionParameters.reason?.column.GetValue();
+                const justificationValue = actionParameters.justification?.column?.GetValue();
+                return (reasonValue != null && reasonValue.length > 0) || (justificationValue != null && justificationValue.length > 0);
+              },
+              message: '#LDS#Please enter or select a reason for your decision.',
+            }
           : undefined,
       },
       apply: async (request: Approval) => {
@@ -599,7 +597,7 @@ export class WorkflowActionService {
               request.GetEntity().GetDisplay(),
               '',
               async () => {
-                await config.apply(request as Approval);
+                await config.apply(request as Approval, result);
               },
               request.GetEntity().GetKeys().join(','),
             ),
@@ -614,7 +612,7 @@ export class WorkflowActionService {
         let success: boolean;
         try {
           for (const request of config.data.requests) {
-            await config.apply(request as Approval);
+            await config.apply(request as Approval, result);
           }
           success = true;
         } finally {

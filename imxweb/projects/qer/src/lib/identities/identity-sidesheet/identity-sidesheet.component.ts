@@ -332,11 +332,14 @@ export class IdentitySidesheetComponent implements OnInit, OnDestroy {
 
     // Handle the IsInActive column outside the context of a CDR editor so the UI can invert the meaning to make more sense to the user
     // This should be inversed on the api data response at some point, but until then we handle it in the UI
-    this.isActiveFormControl.setValue(!this.data.selectedIdentity.IsInActive.value);
-    if (!this.data.canEdit || !this.data.selectedIdentity.IsInActive.GetMetadata().CanEdit()) {
-      this.isActiveFormControl.disable();
+    // For non-admins, IsInActive is rendered as a CDR field instead, so we skip the toggle form control registration.
+    if (this.data.isAdmin) {
+      this.isActiveFormControl.setValue(!this.data.selectedIdentity.IsInActive.value);
+      if (!this.data.canEdit || !this.data.selectedIdentity.IsInActive.GetMetadata().CanEdit()) {
+        this.isActiveFormControl.disable();
+      }
+      this.detailsFormGroup.addControl(this.data.selectedIdentity.IsInActive.Column.ColumnName, this.isActiveFormControl);
     }
-    this.detailsFormGroup.addControl(this.data.selectedIdentity.IsInActive.Column.ColumnName, this.isActiveFormControl);
 
     this.isSecurityIncidentFormControl.setValue(this.data.selectedIdentity.IsSecurityIncident.value);
     if (!this.data.canEdit || !this.data.selectedIdentity.IsSecurityIncident.GetMetadata().CanEdit()) {
@@ -355,7 +358,7 @@ export class IdentitySidesheetComponent implements OnInit, OnDestroy {
     const organizationalColumns = this.data.projectConfig.PersonConfig?.VI_Employee_MasterData_OrganizationalAttributes || [];
     this.cdrListOrganizational = this.cdrFactoryService.buildCdrFromColumnList(
       this.data.selectedIdentity.GetEntity(),
-      organizationalColumns.filter((column) => column !== 'IsInActive'),
+      organizationalColumns.filter((column) => !this.data.isAdmin || column !== 'IsInActive'),
       !this.data.canEdit,
     );
 

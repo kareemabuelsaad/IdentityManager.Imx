@@ -40,7 +40,7 @@
     data-imx-identifier="workflow-action-button-save"
     mat-flat-button
     color="primary"
-    (click)="sideSheetRef.close(true)"
+    (click)="onClose()"
     *ngIf="formGroup"
     [disabled]="formGroup.invalid"
   >
