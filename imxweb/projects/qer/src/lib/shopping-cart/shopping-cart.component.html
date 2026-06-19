@@ -195,7 +195,7 @@
         </button>
         <button
           data-imx-identifier="imx-table-actions-edit-menu"
-          [disabled]="!cartItems?.itemsCanBeEdited()"
+          [disabled]="!cartItems?.haveSelectedItems()"
           title="{{ '#LDS#Opens common request properties for the selected products for editing' | translate }}"
           mat-menu-item
           (click)="cartItems?.editSelectedItems()"
