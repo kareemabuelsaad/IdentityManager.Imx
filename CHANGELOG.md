@@ -1,3 +1,7 @@
+### June 29, 2026
+- 713400: Fixing an issue with Web Portal init page load time.
+- 722179: Fixing an issue with Web Protal MaxValidDays/ValidUntil in product approval.
+- 713974: Fixing an issue with Web portal searchbar in IT shop
 ### June 18, 2026
 - 710272: Fixing an issue with Rule violations filter column mismatch.
 - 722179: Fixing an issue with new request approval workflow valid dates.
