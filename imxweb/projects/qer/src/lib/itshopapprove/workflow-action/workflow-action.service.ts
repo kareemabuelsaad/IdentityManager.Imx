@@ -380,17 +380,21 @@ export class WorkflowActionService {
           const from = formGroup.controls.ValidFrom!.value;
           if (from) {
             request.ValidFrom.value = addTimeNowToDate(from);
-          } else {
+          } else if (requests.length === 1) {
             // The value was removed, so set it to null in order to not send an invalid date to the backend
             await request.ValidFrom.Column.PutValue(null);
           }
         }
 
-        if (request.canSetValidUntil(itShopConfig) && formGroup.controls.ValidUntil) {
+        if (
+          request.canSetValidUntil(itShopConfig) &&
+          formGroup.controls.ValidUntil &&
+          (formGroup.controls.ValidUntil.value == null || !formGroup.controls.ValidUntil.value.isSame(request.ValidUntil.value, 'day'))
+        ) {
           const until = formGroup.controls.ValidUntil!.value;
           if (until) {
             request.ValidUntil.value = addTimeNowToDate(until);
-          } else {
+          } else if (requests.length === 1) {
             // The value was removed, so set it to null in order to not send an invalid date to the backend
             await request.ValidUntil.Column.PutValue(null);
           }
