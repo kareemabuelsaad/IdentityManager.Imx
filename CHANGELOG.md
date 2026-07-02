@@ -1,3 +1,7 @@
+### July 2, 2026
+- 709042: Fixing an issue with new request approval workflow valid dates.
+- 698009: Fixing profile language not applied when configured via Manager.
+
 ### June 18, 2026
 - 710272: Fixing an issue with Rule violations filter column mismatch.
 - 706275: Fixing enable bulk edit for role-membership cart items.
