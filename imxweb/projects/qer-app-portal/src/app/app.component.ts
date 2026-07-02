@@ -101,7 +101,8 @@ export class AppComponent implements OnInit, OnDestroy {
         this.isLoggedIn = sessionState.IsLoggedIn ?? false;
         if (this.isLoggedIn) {
           this.profileSettings = await this.qerClient.v2Client.portal_profile_get();
-          const isUseProfileLangChecked = this.profileSettings.UseProfileLanguage ?? false;
+          const config: QerProjectConfig & ProjectConfig = await projectConfig.getConfig();
+          const isUseProfileLangChecked = this.profileSettings.UseProfileLanguage ?? config.PersonConfig?.UseProfileCulture ?? false;
           // Set session culture if isUseProfileLangChecked is true
           if (isUseProfileLangChecked) {
             // Use culture if available, if not fetch
@@ -115,7 +116,6 @@ export class AppComponent implements OnInit, OnDestroy {
             }
           }
 
-          const config: QerProjectConfig & ProjectConfig = await projectConfig.getConfig();
           const features = (await userModelService.getFeatures()).Features ?? [];
           const systemInfo = await systemInfoService.get();
           const groups = (await userModelService.getGroups()).map((group) => group.Name || '');
