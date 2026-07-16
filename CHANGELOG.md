@@ -1,5 +1,5 @@
 ### July 13, 2026
-- 713184: Optimizing request history and pending request loading.
+- 713184: Optimizing request history and pending request loading (Need API update).
 - 724361: Fixing pending attestation grouping.
 
 ### June 29, 2026
