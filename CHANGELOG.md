@@ -1,3 +1,7 @@
+### July 13, 2026
+- 713184: Optimizing request history and pending request loading (Need API update).
+- 724361: Fixing pending attestation grouping.
+
 ### June 29, 2026
 - 713400: Fixing an issue with Web Portal init page load time.
 
