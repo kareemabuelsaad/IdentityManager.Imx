@@ -56,17 +56,14 @@ export class NewMembershipService {
     try {
       items = items.filter((elem) => elem.UidITShopOrg && elem.UidITShopOrg.length > 0);
 
-      const promises: Promise<any>[] = [];
-
       for (const item of items) {
         if (item.UidITShopOrg && item.UidPerson) {
           const entity = this.qerClient.typedClient.PortalCartitem.createEntity();
           entity.UID_ITShopOrg.value = item.UidITShopOrg;
           entity.UID_PersonOrdered.value = item.UidPerson;
-          promises.push(this.qerClient.typedClient.PortalCartitem.Post(entity));
+          await this.qerClient.typedClient.PortalCartitem.Post(entity);
         }
       }
-      await Promise.all(promises);
       await this.userService.reloadPendingItems();
     } finally {
       this.busyService.hide();
