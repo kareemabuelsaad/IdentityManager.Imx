@@ -4,11 +4,11 @@
 ### July 13, 2026
 - 724361: Fixing pending attestation grouping.
 - 713184: Optimizing request history and pending request loading
-> [!IMPORTANT]
-> **Need API update (20260721_OneIdentityManager.9.2.#713400 transport package)**
 
 ### June 29, 2026
 - 713400: Fixing an issue with Web Portal init page load time.
+> [!IMPORTANT]
+> **Need API update (20260721_OneIdentityManager.9.2.#713400 transport package)**
 
 ### June 18, 2026
 - 710272: Fixing an issue with Rule violations filter column mismatch.
