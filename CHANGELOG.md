@@ -1,3 +1,6 @@
+### July 30, 2026
+- 724499 - Fixing parallel cart creation when requesting multiple group memberships.
+
 ### July 3, 2026
 - 709042: Fixing an issue with new request approval workflow valid dates.
 - 698009: Fixing profile language not applied when configured via Manager.
